@@ -208,6 +208,16 @@ func (h *HashMap) Count() uint32 {
 	return h.used
 }
 
+// FirstKey retruns first key on bucket
+func (h *HashMap) FirstKey() []byte {
+	for _, e := range h.bkts {
+		for ; e != nil; e = e.next {
+			return e.key
+		}
+	}
+	return nil
+}
+
 // AllKeys will return all the keys stored in the HashMap
 func (h *HashMap) AllKeys() [][]byte {
 	all := make([][]byte, 0, h.used)
