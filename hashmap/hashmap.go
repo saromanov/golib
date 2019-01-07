@@ -229,6 +229,14 @@ func (h *HashMap) AllKeys() [][]byte {
 	return all
 }
 
+// GetKeyByIndex returns key by the index
+func (h *HashMap) GetKeyByIndex(i int)[]byte {
+	if i > len(h.bkts) {
+		return nil
+	}
+	return h.bkts[i].key
+}
+
 // All returns all the Entries in the map
 func (h *HashMap) All() []interface{} {
 	all := make([]interface{}, 0, h.used)
