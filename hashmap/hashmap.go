@@ -234,7 +234,16 @@ func (h *HashMap) GetKeyByIndex(i int)[]byte {
 	if i > len(h.bkts) {
 		return nil
 	}
-	return h.bkts[i].key
+	iter := 0
+	for _, e := range h.bkts {
+		for ; e != nil; e = e.next {
+			iter++
+			if iter == i {
+				return e.key
+			}
+		}
+	}
+	return nil
 }
 
 // All returns all the Entries in the map
