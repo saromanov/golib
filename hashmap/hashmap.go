@@ -237,10 +237,10 @@ func (h *HashMap) GetKeyByIndex(i int)[]byte {
 	iter := 0
 	for _, e := range h.bkts {
 		for ; e != nil; e = e.next {
-			iter++
 			if iter == i {
 				return e.key
 			}
+			iter++
 		}
 	}
 	return nil
